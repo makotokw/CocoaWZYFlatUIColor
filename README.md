@@ -3,7 +3,7 @@ CocoaFlatUIColor
 
 ## Installation
 
-by CocoaPod
+by CocoaPods
 
 ```ruby:Podfile
 pod 'FlatUIColor', :git => 'https://github.com/makotokw/CocoaFlatUIColor.git'
