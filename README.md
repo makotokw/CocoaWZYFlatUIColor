@@ -1,4 +1,4 @@
-CocoaFlatUIColor
+WZYFlatUIColor
 ========
 
 ## Installation
@@ -6,7 +6,7 @@ CocoaFlatUIColor
 by CocoaPods
 
 ```ruby:Podfile
-pod 'FlatUIColor', :git => 'https://github.com/makotokw/CocoaFlatUIColor.git'
+pod 'WZYFlatUIColor', :git => 'https://github.com/makotokw/CocoaWZYFlatUIColor.git'
 ```
 
 ## License
