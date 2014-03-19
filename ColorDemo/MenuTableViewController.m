@@ -32,27 +32,45 @@
     [super viewDidLoad];
     self.title = @"WZYFlatUIColor";
     
-    _menuItems = @[
-        @{ @"title": @"wzy_turquoiseFlatColor" },
-        @{ @"title": @"wzy_greenSeaFlatColor" },
-        @{ @"title": @"wzy_emeraldFlatColor" },
-        @{ @"title": @"wzy_nephritisFlatColor" },
-        @{ @"title": @"wzy_peterRiverFlatColor" },
-        @{ @"title": @"wzy_belizeHoleFlatColor" },
-        @{ @"title": @"wzy_amethystFlatColor" },
-        @{ @"title": @"wzy_wisteriaFlatColor" },
-        @{ @"title": @"wzy_wetAsphaltFlatColor" },
-        @{ @"title": @"wzy_midnightBlueFlatColor" },
-        @{ @"title": @"wzy_sunFlowerFlatColor" },
-        @{ @"title": @"wzy_orangeFlatColor" },
-        @{ @"title": @"wzy_carrotFlatColor" },
-        @{ @"title": @"wzy_pumpkinFlatColor" },
-        @{ @"title": @"wzy_alizarinFlatColor" },
-        @{ @"title": @"wzy_pomegranateFlatColor" },
-        @{ @"title": @"wzy_cloudsFlatColor" },
-        @{ @"title": @"wzy_silverFlatColor" },
-        @{ @"title": @"wzy_concreteFlatColor" },
-        @{ @"title": @"wzy_asbestosFlatColor" },
+    _menuItems = @[@{
+                       @"category": @"FlatUIColor",
+                       @"items": @[
+                           @{ @"title": @"wzy_turquoiseFlatColor" },
+                           @{ @"title": @"wzy_greenSeaFlatColor" },
+                           @{ @"title": @"wzy_emeraldFlatColor" },
+                           @{ @"title": @"wzy_nephritisFlatColor" },
+                           @{ @"title": @"wzy_peterRiverFlatColor" },
+                           @{ @"title": @"wzy_belizeHoleFlatColor" },
+                           @{ @"title": @"wzy_amethystFlatColor" },
+                           @{ @"title": @"wzy_wisteriaFlatColor" },
+                           @{ @"title": @"wzy_wetAsphaltFlatColor" },
+                           @{ @"title": @"wzy_midnightBlueFlatColor" },
+                           @{ @"title": @"wzy_sunFlowerFlatColor" },
+                           @{ @"title": @"wzy_orangeFlatColor" },
+                           @{ @"title": @"wzy_carrotFlatColor" },
+                           @{ @"title": @"wzy_pumpkinFlatColor" },
+                           @{ @"title": @"wzy_alizarinFlatColor" },
+                           @{ @"title": @"wzy_pomegranateFlatColor" },
+                           @{ @"title": @"wzy_cloudsFlatColor" },
+                           @{ @"title": @"wzy_silverFlatColor" },
+                           @{ @"title": @"wzy_concreteFlatColor" },
+                           @{ @"title": @"wzy_asbestosFlatColor" }
+                       ]
+                   }, @{
+                       @"category": @"iOS7Color",
+                       @"items": @[
+                           @{ @"title": @"wzy_redIOS7Color" },
+                           @{ @"title": @"wzy_orangeIOS7Color" },
+                           @{ @"title": @"wzy_yellowIOS7Color" },
+                           @{ @"title": @"wzy_greenIOS7Color" },
+                           @{ @"title": @"wzy_tealIOS7Color" },
+                           @{ @"title": @"wzy_blueIOS7Color" },
+                           @{ @"title": @"wzy_violetIOS7Color" },
+                           @{ @"title": @"wzy_pinkIOS7Color" },
+                           @{ @"title": @"wzy_midGrayIOS7Color" },
+                           @{ @"title": @"wzy_grayIOS7Color" }
+                       ]
+                   }
                  ];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -68,12 +86,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return _menuItems.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _menuItems.count;
+    NSArray *items = _menuItems[section][@"items"];
+    return items.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return _menuItems[section][@"category"];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 66.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 66)];
+    headerView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5];
+    UILabel *label = [[UILabel alloc] initWithFrame:headerView.bounds];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = _menuItems[section][@"category"];
+    label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor clearColor];
+    [headerView addSubview:label];
+    return headerView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,7 +123,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *item = _menuItems[indexPath.row];
+    NSArray *items = _menuItems[indexPath.section][@"items"];
+    NSDictionary *item = items[indexPath.row];
     cell.textLabel.text = item[@"title"];
     
     SEL sel = NSSelectorFromString(item[@"title"]);
@@ -91,59 +134,5 @@
 
     return cell;
 }
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
