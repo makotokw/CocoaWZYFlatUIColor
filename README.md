@@ -5,8 +5,16 @@ WZYFlatUIColor
 
 by CocoaPods
 
-```ruby:Podfile
+```ruby
 pod 'WZYFlatUIColor', :git => 'https://github.com/makotokw/CocoaWZYFlatUIColor.git'
+```
+
+## Usage
+
+```
+#import "WZYFlatUIColor.h"
+// ...
+textLabel.textColor = [UIColor wzy_sunFlowerFlatColor];
 ```
 
 ## License
