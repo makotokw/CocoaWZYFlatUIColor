@@ -17,6 +17,8 @@ pod 'WZYFlatUIColor', :git => 'https://github.com/makotokw/CocoaWZYFlatUIColor.g
 textLabel.textColor = [UIColor wzy_sunFlowerFlatColor];
 ```
 
+[![](https://dl.dropboxusercontent.com/u/8932138/screenshot/CocoaWZYFlatUIColor/WZYFlatUIColor.png)](https://dl.dropboxusercontent.com/u/8932138/screenshot/CocoaWZYFlatUIColor/WZYFlatUIColor.png)
+
 ## License
 
 The MIT License (MIT)  
