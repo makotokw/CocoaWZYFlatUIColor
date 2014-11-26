@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/makotokw/CocoaWZYFlatUIColor"
   s.license      = 'MIT'
   s.author       = { "makoto_kw" => "makoto.kw@gmail.com" }
-  s.source       = { :git => "https://github.com/makotokw/CocoaWZYFlatUIColor.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/makotokw/CocoaWZYFlatUIColor.git", :tag => "v1.0.0" }
 
   s.platform     = :ios, '5.0'
   s.source_files = 'Classes/*.{h,m}'
